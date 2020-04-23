@@ -25,7 +25,7 @@ SECRET_KEY = 's1=@ij@pqoz%r96xonc*1nuse55_-!x$)j+2fd)o*@*=3kv8ps'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://bholeapi.herokuapp.com/','localhost']
+ALLOWED_HOSTS = ['bholeapi.herokuapp.com','localhost']
 
 
 # Application definition
