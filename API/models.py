@@ -8,16 +8,16 @@
 from django.db import models
 
 
-# class Address(models.Model):
-#     address_line1 = models.CharField(max_length=250)
-#     address_line2 = models.CharField(max_length=250)
-#     city = models.IntegerField()
-#     img = models.CharField(max_length=250)
-#     status = models.IntegerField()
+class Address(models.Model):
+    address_line1 = models.CharField(max_length=250)
+    address_line2 = models.CharField(max_length=250)
+    city = models.IntegerField()
+    img = models.CharField(max_length=250)
+    status = models.IntegerField()
 
-#     class Meta:
-#         managed = False
-#         db_table = 'address'
+    class Meta:
+        managed = False
+        db_table = 'address'
 
 
 class AdminDetails(models.Model):
@@ -31,25 +31,25 @@ class AdminDetails(models.Model):
         db_table = 'admin_details'
 
 
-# class AdminPasswordRecovery(models.Model):
-#     uniquid = models.CharField(db_column='UniquId', max_length=100)  # Field name made lowercase.
-#     otp = models.CharField(db_column='Otp', max_length=20)  # Field name made lowercase.
-#     requesttime = models.DateTimeField(db_column='RequestTime')  # Field name made lowercase.
-#     userid = models.ForeignKey('TblAdmin', models.DO_NOTHING, db_column='UserId')  # Field name made lowercase.
+class AdminPasswordRecovery(models.Model):
+    uniquid = models.CharField(db_column='UniquId', max_length=100)  # Field name made lowercase.
+    otp = models.CharField(db_column='Otp', max_length=20)  # Field name made lowercase.
+    requesttime = models.DateTimeField(db_column='RequestTime')  # Field name made lowercase.
+    userid = models.ForeignKey('TblAdmin', models.DO_NOTHING, db_column='UserId')  # Field name made lowercase.
 
-#     class Meta:
-#         managed = False
-#         db_table = 'admin_password_recovery'
+    class Meta:
+        managed = False
+        db_table = 'admin_password_recovery'
 
 
-# class AreaOfInterest(models.Model):
-#     id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-#     interest = models.CharField(db_column='Interest', max_length=200)  # Field name made lowercase.
-#     status = models.IntegerField(db_column='Status')  # Field name made lowercase.
+class AreaOfInterest(models.Model):
+    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
+    interest = models.CharField(db_column='Interest', max_length=200)  # Field name made lowercase.
+    status = models.IntegerField(db_column='Status')  # Field name made lowercase.
 
-#     class Meta:
-#         managed = False
-#         db_table = 'area_of_interest'
+    class Meta:
+        managed = False
+        db_table = 'area_of_interest'
 
 
 class AuthGroup(models.Model):
@@ -128,27 +128,27 @@ class AuthtokenToken(models.Model):
         db_table = 'authtoken_token'
 
 
-# class City(models.Model):
-#     id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-#     cityname = models.CharField(db_column='CityName', max_length=100)  # Field name made lowercase.
-#     citycode = models.CharField(db_column='CityCode', max_length=50)  # Field name made lowercase.
-#     stateid = models.IntegerField(db_column='StateId')  # Field name made lowercase.
-#     status = models.IntegerField(db_column='Status')  # Field name made lowercase.
+class City(models.Model):
+    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
+    cityname = models.CharField(db_column='CityName', max_length=100)  # Field name made lowercase.
+    citycode = models.CharField(db_column='CityCode', max_length=50)  # Field name made lowercase.
+    stateid = models.IntegerField(db_column='StateId')  # Field name made lowercase.
+    status = models.IntegerField(db_column='Status')  # Field name made lowercase.
 
-#     class Meta:
-#         managed = False
-#         db_table = 'city'
+    class Meta:
+        managed = False
+        db_table = 'city'
 
 
-# class Country(models.Model):
-#     id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-#     countryname = models.CharField(db_column='CountryName', max_length=100)  # Field name made lowercase.
-#     countrycode = models.CharField(db_column='CountryCode', max_length=50)  # Field name made lowercase.
-#     status = models.IntegerField(db_column='Status')  # Field name made lowercase.
+class Country(models.Model):
+    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
+    countryname = models.CharField(db_column='CountryName', max_length=100)  # Field name made lowercase.
+    countrycode = models.CharField(db_column='CountryCode', max_length=50)  # Field name made lowercase.
+    status = models.IntegerField(db_column='Status')  # Field name made lowercase.
 
-#     class Meta:
-#         managed = False
-#         db_table = 'country'
+    class Meta:
+        managed = False
+        db_table = 'country'
 
 
 class DjangoAdminLog(models.Model):
@@ -212,31 +212,31 @@ class Eligibilitycheckedmember(models.Model):
         db_table = 'eligibilitycheckedmember'
 
 
-# class Location(models.Model):
-#     l_id = models.AutoField(primary_key=True)
-#     l_name = models.CharField(max_length=100)
-#     status = models.IntegerField()
+class Location(models.Model):
+    l_id = models.AutoField(primary_key=True)
+    l_name = models.CharField(max_length=100)
+    status = models.IntegerField()
 
-#     class Meta:
-#         managed = False
-#         db_table = 'location'
+    class Meta:
+        managed = False
+        db_table = 'location'
 
 
-# class MemberAddress(models.Model):
-#     id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-#     address1 = models.CharField(db_column='Address1', max_length=200)  # Field name made lowercase.
-#     address2 = models.CharField(db_column='Address2', max_length=200)  # Field name made lowercase.
-#     country = models.IntegerField(db_column='Country')  # Field name made lowercase.
-#     state = models.IntegerField(db_column='State')  # Field name made lowercase.
-#     city = models.IntegerField(db_column='City')  # Field name made lowercase.
-#     pincode = models.BigIntegerField(db_column='PinCode')  # Field name made lowercase.
-#     area = models.CharField(db_column='Area', max_length=200, blank=True, null=True)  # Field name made lowercase.
-#     memberid = models.IntegerField(db_column='MemberId')  # Field name made lowercase.
-#     status = models.IntegerField(db_column='Status')  # Field name made lowercase.
+class MemberAddress(models.Model):
+    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
+    address1 = models.CharField(db_column='Address1', max_length=200)  # Field name made lowercase.
+    address2 = models.CharField(db_column='Address2', max_length=200)  # Field name made lowercase.
+    country = models.IntegerField(db_column='Country')  # Field name made lowercase.
+    state = models.IntegerField(db_column='State')  # Field name made lowercase.
+    city = models.IntegerField(db_column='City')  # Field name made lowercase.
+    pincode = models.BigIntegerField(db_column='PinCode')  # Field name made lowercase.
+    area = models.CharField(db_column='Area', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    memberid = models.IntegerField(db_column='MemberId')  # Field name made lowercase.
+    status = models.IntegerField(db_column='Status')  # Field name made lowercase.
 
-#     class Meta:
-#         managed = False
-#         db_table = 'member_address'
+    class Meta:
+        managed = False
+        db_table = 'member_address'
 
 
 class MemberDetails(models.Model):
@@ -260,133 +260,133 @@ class MemberDetails(models.Model):
         db_table = 'member_details'
 
 
-# class MemberPasswordRecovery(models.Model):
-#     id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-#     otp = models.CharField(db_column='Otp', max_length=10)  # Field name made lowercase.
-#     uniqueid = models.CharField(db_column='UniqueId', max_length=100)  # Field name made lowercase.
-#     memberid = models.IntegerField(db_column='MemberId')  # Field name made lowercase.
-#     requesttime = models.DateTimeField(db_column='RequestTime')  # Field name made lowercase.
+class MemberPasswordRecovery(models.Model):
+    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
+    otp = models.CharField(db_column='Otp', max_length=10)  # Field name made lowercase.
+    uniqueid = models.CharField(db_column='UniqueId', max_length=100)  # Field name made lowercase.
+    memberid = models.IntegerField(db_column='MemberId')  # Field name made lowercase.
+    requesttime = models.DateTimeField(db_column='RequestTime')  # Field name made lowercase.
 
-#     class Meta:
-#         managed = False
-#         db_table = 'member_password_recovery'
-
-
-# class MemberWorkExperience(models.Model):
-#     id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-#     year_of_exp = models.IntegerField(db_column='Year_Of_Exp', blank=True, null=True)  # Field name made lowercase.
-#     org_name = models.CharField(db_column='Org_Name', max_length=100, blank=True, null=True)  # Field name made lowercase.
-#     state = models.IntegerField(db_column='State', blank=True, null=True)  # Field name made lowercase.
-#     district = models.IntegerField(db_column='District', blank=True, null=True)  # Field name made lowercase.
-#     website = models.CharField(db_column='Website', max_length=100, blank=True, null=True)  # Field name made lowercase.
-#     contact = models.CharField(db_column='Contact', max_length=15, blank=True, null=True)  # Field name made lowercase.
-#     memberid = models.IntegerField(db_column='MemberId', blank=True, null=True)  # Field name made lowercase.
-
-#     class Meta:
-#         managed = False
-#         db_table = 'member_work_experience'
+    class Meta:
+        managed = False
+        db_table = 'member_password_recovery'
 
 
-# class MeritalStatus(models.Model):
-#     id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-#     merital_status = models.CharField(db_column='Merital_Status', max_length=100)  # Field name made lowercase.
-#     status = models.IntegerField(db_column='Status')  # Field name made lowercase.
+class MemberWorkExperience(models.Model):
+    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
+    year_of_exp = models.IntegerField(db_column='Year_Of_Exp', blank=True, null=True)  # Field name made lowercase.
+    org_name = models.CharField(db_column='Org_Name', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    state = models.IntegerField(db_column='State', blank=True, null=True)  # Field name made lowercase.
+    district = models.IntegerField(db_column='District', blank=True, null=True)  # Field name made lowercase.
+    website = models.CharField(db_column='Website', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    contact = models.CharField(db_column='Contact', max_length=15, blank=True, null=True)  # Field name made lowercase.
+    memberid = models.IntegerField(db_column='MemberId', blank=True, null=True)  # Field name made lowercase.
 
-#     class Meta:
-#         managed = False
-#         db_table = 'merital_status'
-
-
-# class MultiCate(models.Model):
-#     scheme_id = models.IntegerField()
-#     occupation_id = models.IntegerField()
-
-#     class Meta:
-#         managed = False
-#         db_table = 'multi_cate'
+    class Meta:
+        managed = False
+        db_table = 'member_work_experience'
 
 
-# class Occupation(models.Model):
-#     name = models.CharField(max_length=100)
-#     status = models.IntegerField()
+class MeritalStatus(models.Model):
+    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
+    merital_status = models.CharField(db_column='Merital_Status', max_length=100)  # Field name made lowercase.
+    status = models.IntegerField(db_column='Status')  # Field name made lowercase.
 
-#     class Meta:
-#         managed = False
-#         db_table = 'occupation'
-
-
-# class Organization(models.Model):
-#     id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-#     organization_name = models.CharField(db_column='Organization_Name', max_length=100, blank=True, null=True)  # Field name made lowercase.
-#     head_of_organization = models.CharField(db_column='Head_Of_Organization', max_length=200, blank=True, null=True)  # Field name made lowercase.
-#     type_of_organization = models.CharField(db_column='Type_Of_Organization', max_length=100, blank=True, null=True)  # Field name made lowercase.
-#     registration_number = models.CharField(db_column='Registration_Number', max_length=100, blank=True, null=True)  # Field name made lowercase.
-#     why_you_join = models.CharField(db_column='Why_You_Join', max_length=200, blank=True, null=True)  # Field name made lowercase.
-#     member_id = models.IntegerField(db_column='Member_Id')  # Field name made lowercase.
-
-#     class Meta:
-#         managed = False
-#         db_table = 'organization'
+    class Meta:
+        managed = False
+        db_table = 'merital_status'
 
 
-# class Pages(models.Model):
-#     id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-#     page_name = models.CharField(db_column='Page_Name', max_length=200)  # Field name made lowercase.
-#     title = models.CharField(db_column='Title', max_length=150)  # Field name made lowercase.
-#     sortdesc = models.CharField(db_column='SortDesc', max_length=250)  # Field name made lowercase.
-#     longdesc = models.CharField(db_column='LongDesc', max_length=500)  # Field name made lowercase.
-#     image = models.CharField(db_column='Image', max_length=250)  # Field name made lowercase.
-#     createdon = models.DateTimeField(db_column='CreatedOn')  # Field name made lowercase.
-#     status = models.IntegerField(db_column='Status')  # Field name made lowercase.
+class MultiCate(models.Model):
+    scheme_id = models.IntegerField()
+    occupation_id = models.IntegerField()
 
-#     class Meta:
-#         managed = False
-#         db_table = 'pages'
+    class Meta:
+        managed = False
+        db_table = 'multi_cate'
 
 
-# class Photo(models.Model):
-#     name = models.CharField(max_length=250)
-#     cate_id = models.IntegerField()
-#     img = models.CharField(max_length=250)
-#     status = models.IntegerField()
+class Occupation(models.Model):
+    name = models.CharField(max_length=100)
+    status = models.IntegerField()
 
-#     class Meta:
-#         managed = False
-#         db_table = 'photo'
+    class Meta:
+        managed = False
+        db_table = 'occupation'
 
 
-# class Project(models.Model):
-#     name = models.CharField(max_length=100)
-#     image = models.CharField(max_length=100)
-#     p_desc = models.TextField()
-#     status = models.IntegerField()
-#     cate = models.IntegerField()
-#     createdon = models.DateTimeField(db_column='CreatedOn')  # Field name made lowercase.
+class Organization(models.Model):
+    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
+    organization_name = models.CharField(db_column='Organization_Name', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    head_of_organization = models.CharField(db_column='Head_Of_Organization', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    type_of_organization = models.CharField(db_column='Type_Of_Organization', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    registration_number = models.CharField(db_column='Registration_Number', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    why_you_join = models.CharField(db_column='Why_You_Join', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    member_id = models.IntegerField(db_column='Member_Id')  # Field name made lowercase.
 
-#     class Meta:
-#         managed = False
-#         db_table = 'project'
-
-
-# class ProjectCate(models.Model):
-#     name = models.CharField(max_length=100)
-#     status = models.IntegerField()
-#     createdon = models.DateTimeField(db_column='CreatedOn')  # Field name made lowercase.
-
-#     class Meta:
-#         managed = False
-#         db_table = 'project_cate'
+    class Meta:
+        managed = False
+        db_table = 'organization'
 
 
-# class Reports(models.Model):
-#     name = models.CharField(max_length=100)
-#     pdf = models.CharField(max_length=250)
-#     img = models.CharField(max_length=250)
-#     status = models.IntegerField()
+class Pages(models.Model):
+    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
+    page_name = models.CharField(db_column='Page_Name', max_length=200)  # Field name made lowercase.
+    title = models.CharField(db_column='Title', max_length=150)  # Field name made lowercase.
+    sortdesc = models.CharField(db_column='SortDesc', max_length=250)  # Field name made lowercase.
+    longdesc = models.CharField(db_column='LongDesc', max_length=500)  # Field name made lowercase.
+    image = models.CharField(db_column='Image', max_length=250)  # Field name made lowercase.
+    createdon = models.DateTimeField(db_column='CreatedOn')  # Field name made lowercase.
+    status = models.IntegerField(db_column='Status')  # Field name made lowercase.
 
-#     class Meta:
-#         managed = False
-#         db_table = 'reports'
+    class Meta:
+        managed = False
+        db_table = 'pages'
+
+
+class Photo(models.Model):
+    name = models.CharField(max_length=250)
+    cate_id = models.IntegerField()
+    img = models.CharField(max_length=250)
+    status = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'photo'
+
+
+class Project(models.Model):
+    name = models.CharField(max_length=100)
+    image = models.CharField(max_length=100)
+    p_desc = models.TextField()
+    status = models.IntegerField()
+    cate = models.IntegerField()
+    createdon = models.DateTimeField(db_column='CreatedOn')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'project'
+
+
+class ProjectCate(models.Model):
+    name = models.CharField(max_length=100)
+    status = models.IntegerField()
+    createdon = models.DateTimeField(db_column='CreatedOn')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'project_cate'
+
+
+class Reports(models.Model):
+    name = models.CharField(max_length=100)
+    pdf = models.CharField(max_length=250)
+    img = models.CharField(max_length=250)
+    status = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'reports'
 
 
 class SCategory(models.Model):
@@ -397,21 +397,21 @@ class SCategory(models.Model):
     s_short_desc = models.CharField(max_length=250)
     status = models.IntegerField()
 
-    # class Meta:
-    #     managed = False
-    #     db_table = 's_category'
+    class Meta:
+        #managed = False
+        db_table = 's_category'
 
 
-# class Schemeapplied(models.Model):
-#     id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-#     schemeid = models.IntegerField(db_column='SChemeId')  # Field name made lowercase.
-#     memberid = models.IntegerField(db_column='MemberId')  # Field name made lowercase.
-#     applieddate = models.DateTimeField(db_column='AppliedDate')  # Field name made lowercase.
-#     status = models.IntegerField(db_column='Status')  # Field name made lowercase.
+class Schemeapplied(models.Model):
+    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
+    schemeid = models.IntegerField(db_column='SChemeId')  # Field name made lowercase.
+    memberid = models.IntegerField(db_column='MemberId')  # Field name made lowercase.
+    applieddate = models.DateTimeField(db_column='AppliedDate')  # Field name made lowercase.
+    status = models.IntegerField(db_column='Status')  # Field name made lowercase.
 
-#     class Meta:
-#         managed = False
-#         db_table = 'schemeapplied'
+    class Meta:
+        managed = False
+        db_table = 'schemeapplied'
 
 
 class SchemesDetails(models.Model):
@@ -451,26 +451,26 @@ class Schems(models.Model):
         db_table = 'schems'
 
 
-# class Skills(models.Model):
-#     id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-#     skill = models.CharField(db_column='Skill', max_length=200)  # Field name made lowercase.
-#     status = models.IntegerField(db_column='Status')  # Field name made lowercase.
+class Skills(models.Model):
+    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
+    skill = models.CharField(db_column='Skill', max_length=200)  # Field name made lowercase.
+    status = models.IntegerField(db_column='Status')  # Field name made lowercase.
 
-#     class Meta:
-#         managed = False
-#         db_table = 'skills'
+    class Meta:
+        managed = False
+        db_table = 'skills'
 
 
-# class State(models.Model):
-#     id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-#     statename = models.CharField(db_column='StateName', max_length=100)  # Field name made lowercase.
-#     statecode = models.CharField(db_column='StateCode', max_length=100)  # Field name made lowercase.
-#     countryid = models.IntegerField(db_column='CountryId')  # Field name made lowercase.
-#     status = models.IntegerField(db_column='Status')  # Field name made lowercase.
+class State(models.Model):
+    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
+    statename = models.CharField(db_column='StateName', max_length=100)  # Field name made lowercase.
+    statecode = models.CharField(db_column='StateCode', max_length=100)  # Field name made lowercase.
+    countryid = models.IntegerField(db_column='CountryId')  # Field name made lowercase.
+    status = models.IntegerField(db_column='Status')  # Field name made lowercase.
 
-#     class Meta:
-#         managed = False
-#         db_table = 'state'
+    class Meta:
+        managed = False
+        db_table = 'state'
 
 
 class TblAdmin(models.Model):
@@ -482,87 +482,87 @@ class TblAdmin(models.Model):
         db_table = 'tbl_admin'
 
 
-# class TblDonation(models.Model):
-#     id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-#     amount = models.BigIntegerField(db_column='Amount')  # Field name made lowercase.
-#     memberid = models.IntegerField(db_column='MemberId')  # Field name made lowercase.
-#     membertype = models.IntegerField(db_column='MemberType')  # Field name made lowercase.
-#     donationdate = models.DateTimeField(db_column='DonationDate')  # Field name made lowercase.
-#     paymentmethod = models.CharField(db_column='PaymentMethod', max_length=100)  # Field name made lowercase.
-#     status = models.IntegerField(db_column='Status')  # Field name made lowercase.
+class TblDonation(models.Model):
+    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
+    amount = models.BigIntegerField(db_column='Amount')  # Field name made lowercase.
+    memberid = models.IntegerField(db_column='MemberId')  # Field name made lowercase.
+    membertype = models.IntegerField(db_column='MemberType')  # Field name made lowercase.
+    donationdate = models.DateTimeField(db_column='DonationDate')  # Field name made lowercase.
+    paymentmethod = models.CharField(db_column='PaymentMethod', max_length=100)  # Field name made lowercase.
+    status = models.IntegerField(db_column='Status')  # Field name made lowercase.
 
-#     class Meta:
-#         managed = False
-#         db_table = 'tbl_donation'
-
-
-# class TblMember(models.Model):
-#     name = models.CharField(db_column='Name', max_length=100)  # Field name made lowercase.
-#     f_name = models.CharField(db_column='F_Name', max_length=100, blank=True, null=True)  # Field name made lowercase.
-#     email = models.CharField(db_column='Email', max_length=100)  # Field name made lowercase.
-#     mobile = models.CharField(db_column='Mobile', max_length=15)  # Field name made lowercase.
-#     mobile_isverified = models.IntegerField(db_column='Mobile_IsVerified')  # Field name made lowercase.
-#     member_type = models.IntegerField(db_column='Member_Type')  # Field name made lowercase.
-#     createdby = models.IntegerField(db_column='CreatedBy', blank=True, null=True)  # Field name made lowercase.
-#     created_on = models.DateTimeField(db_column='Created_On')  # Field name made lowercase.
-#     status = models.IntegerField(db_column='Status')  # Field name made lowercase.
-
-#     class Meta:
-#         managed = False
-#         db_table = 'tbl_member'
+    class Meta:
+        managed = False
+        db_table = 'tbl_donation'
 
 
-# class TblMemberType(models.Model):
-#     membertype = models.CharField(db_column='MemberType', max_length=200)  # Field name made lowercase.
-#     status = models.IntegerField(db_column='Status')  # Field name made lowercase.
+class TblMember(models.Model):
+    name = models.CharField(db_column='Name', max_length=100)  # Field name made lowercase.
+    f_name = models.CharField(db_column='F_Name', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    email = models.CharField(db_column='Email', max_length=100)  # Field name made lowercase.
+    mobile = models.CharField(db_column='Mobile', max_length=15)  # Field name made lowercase.
+    mobile_isverified = models.IntegerField(db_column='Mobile_IsVerified')  # Field name made lowercase.
+    member_type = models.IntegerField(db_column='Member_Type')  # Field name made lowercase.
+    createdby = models.IntegerField(db_column='CreatedBy', blank=True, null=True)  # Field name made lowercase.
+    created_on = models.DateTimeField(db_column='Created_On')  # Field name made lowercase.
+    status = models.IntegerField(db_column='Status')  # Field name made lowercase.
 
-#     class Meta:
-#         managed = False
-#         db_table = 'tbl_member_type'
-
-
-# class Team(models.Model):
-#     name = models.CharField(max_length=100)
-#     img = models.CharField(max_length=250)
-#     title = models.CharField(max_length=100)
-#     team_desc = models.TextField()
-#     status = models.IntegerField()
-
-#     class Meta:
-#         managed = False
-#         db_table = 'team'
+    class Meta:
+        managed = False
+        db_table = 'tbl_member'
 
 
-# class TeamMember(models.Model):
-#     name = models.CharField(max_length=100)
-#     status = models.IntegerField()
+class TblMemberType(models.Model):
+    membertype = models.CharField(db_column='MemberType', max_length=200)  # Field name made lowercase.
+    status = models.IntegerField(db_column='Status')  # Field name made lowercase.
 
-#     class Meta:
-#         managed = False
-#         db_table = 'team_member'
-
-
-# class Video(models.Model):
-#     url = models.CharField(max_length=250)
-#     name = models.CharField(max_length=250)
-#     cat_id = models.IntegerField()
-#     sceme_id = models.IntegerField()
-#     status = models.IntegerField()
-
-#     class Meta:
-#         managed = False
-#         db_table = 'video'
+    class Meta:
+        managed = False
+        db_table = 'tbl_member_type'
 
 
-# class Workinfo(models.Model):
-#     id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
-#     organizationname = models.CharField(db_column='OrganizationName', max_length=200)  # Field name made lowercase.
-#     state = models.IntegerField(db_column='State')  # Field name made lowercase.
-#     district = models.IntegerField(db_column='District')  # Field name made lowercase.
-#     website = models.CharField(db_column='Website', max_length=100)  # Field name made lowercase.
-#     comment = models.IntegerField(db_column='Comment')  # Field name made lowercase.
-#     member_id = models.IntegerField(db_column='Member_Id')  # Field name made lowercase.
+class Team(models.Model):
+    name = models.CharField(max_length=100)
+    img = models.CharField(max_length=250)
+    title = models.CharField(max_length=100)
+    team_desc = models.TextField()
+    status = models.IntegerField()
 
-#     class Meta:
-#         managed = False
-#         db_table = 'workinfo'
+    class Meta:
+        managed = False
+        db_table = 'team'
+
+
+class TeamMember(models.Model):
+    name = models.CharField(max_length=100)
+    status = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'team_member'
+
+
+class Video(models.Model):
+    url = models.CharField(max_length=250)
+    name = models.CharField(max_length=250)
+    cat_id = models.IntegerField()
+    sceme_id = models.IntegerField()
+    status = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'video'
+
+
+class Workinfo(models.Model):
+    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
+    organizationname = models.CharField(db_column='OrganizationName', max_length=200)  # Field name made lowercase.
+    state = models.IntegerField(db_column='State')  # Field name made lowercase.
+    district = models.IntegerField(db_column='District')  # Field name made lowercase.
+    website = models.CharField(db_column='Website', max_length=100)  # Field name made lowercase.
+    comment = models.IntegerField(db_column='Comment')  # Field name made lowercase.
+    member_id = models.IntegerField(db_column='Member_Id')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'workinfo'
