@@ -132,7 +132,9 @@ class SchemeView(APIView):
     #queryset=Schems.objects.all()
     #serializer_class=SchemeSerializer
     permission_classes = (IsAuthenticated,)
-    authentication_classes=(TokenAuthentication,)             # <-- And here
+    #authentication_classes=(TokenAuthentication,)             # <-- And here
+    permission_classes = (IsSuperUser,)
+   
 
     def get(self,request,id=None):
         schemes=Schems.objects.all()
@@ -224,7 +226,7 @@ class SchemeView(APIView):
 class SchemeCategoryView(generics.GenericAPIView, mixins.UpdateModelMixin,mixins.CreateModelMixin,mixins.ListModelMixin):        
     queryset=SCategory.objects.all()
     serializer_class=SchemeCategorySerializer
-    #permission_classes = (IsSuperUser,)
+    permission_classes = (IsSuperUser,)
    
     def get(self,request,id=None):
         return self.list(request)
@@ -251,4 +253,160 @@ class SchemeCategoryView(generics.GenericAPIView, mixins.UpdateModelMixin,mixins
 
 
 
+#all Scheme category get api
+class GetAllSchemeCategoryView(APIView):
+    def get(self,request):
+        schemes_category=SCategory.objects.all()
+        serializer_data=SchemeCategorySerializer(schemes_category,many=True)
+        print(serializer_data.data)
+        reponse={
+                    "Status":status.HTTP_200_OK,
+                    "Error":{
+                        "ErrorCode":0,
+                        "ErrorMessage":"No Error"
+                    },
+                    "Message":"Scheme Category  list",
+                    "Data":{
+
+                        "data":serializer_data.data
+                        
+                    }
+                }
+        return Response(reponse)
+
+
+#all centered Scheme  get api
+class GetAllCenterSchemeView(APIView):
+    def get(self,request):
+        schemes=Schems.objects.filter(s_type=1)
+        serializer_data=SchemeSerializer(schemes,many=True)
+        print(serializer_data.data)
+        reponse={
+                    "Status":status.HTTP_200_OK,
+                    "Error":{
+                        "ErrorCode":0,
+                        "ErrorMessage":"No Error"
+                    },
+                    "Message":"Centered Scheme   list",
+                    "Data":{
+
+                        "data":serializer_data.data
+                        
+                    }
+                }
+        return Response(reponse)
+        
+#Get all centered Scheme based on category id  get api
+class GetAllCenterSchemeBasedonCategoryView(APIView):
+    def get(self,request):
+        schemes=Schems.objects.filter(s_type=1,s_category=self.request.query_params.get('cat_id'))
+        print("schemes",schemes)
+        serializer_data=SchemeSerializer(schemes,many=True)
+        print(serializer_data.data)
+        reponse={
+                    "Status":status.HTTP_200_OK,
+                    "Error":{
+                        "ErrorCode":0,
+                        "ErrorMessage":"No Error"
+                    },
+                    "Message":"Category Based Centered Scheme   list",
+                    "Data":{
+
+                        "data":serializer_data.data
+                        
+                    }
+                }
+        return Response(reponse)
+
+
+#Get all centered Scheme based on category id  get api
+class GetAllSchemesBasedOnStateView(APIView):
+    def get(self,request):
+        schemes=Schems.objects.filter(s_state=self.request.query_params.get('s_id'))
+        print("schemes",schemes)
+        serializer_data=SchemeSerializer(schemes,many=True)
+        print(serializer_data.data)
+        reponse={
+                    "Status":status.HTTP_200_OK,
+                    "Error":{
+                        "ErrorCode":0,
+                        "ErrorMessage":"No Error"
+                    },
+                    "Message":"State level Scheme   list",
+                    "Data":{
+
+                        "data":serializer_data.data
+                        
+                    }
+                }
+        return Response(reponse)
+
+# #Get Scheme with details based on scheme id view
+# class GetSchemesWithDetailView(APIView):
+#     def get(self,request):
+#         schemes=Schems.objects.get(id=self.request.query_params.get('id'))
+#         print("schemes",schemes)
+#         serializer_data=SchemeWithDetailSerializer(schemes,partial=True)
+#         print(serializer_data.data)
+#         reponse={
+#                     "Status":status.HTTP_200_OK,
+#                     "Error":{
+#                         "ErrorCode":0,
+#                         "ErrorMessage":"No Error"
+#                     },
+#                     "Message":" Scheme with detail ",
+#                     "Data":{
+
+#                         "data":serializer_data.data
+                        
+#                     }
+#                 }
+#         return Response(reponse)
+
+
+import datetime
+
+x = datetime.datetime.now()
+
+
+#Get state and centered Scheme based on userinfo
+class GetSchemesBasedOnUserView(APIView):
+    def post(self,request):
+        age=request.data['age']
+        age_range=x.year-int(age)
+        serializer=CheckElegibilitySerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            schemes_for_center=Schems.objects.filter(s_type=1,scheme_for__icontains=request.data['gender'],
+                marriage__icontains=request.data['marital'],scheme_age__icontains=age_range,family_income=request.data['income'],
+                b_category=request.data['b_category'],occupation__icontains=request.data['occupation'])
+            schemes_for_state=Schems.objects.filter(s_type=0,scheme_for__icontains=request.data['gender'],
+                marriage__icontains=request.data['marital'],scheme_age__icontains=age_range,family_income=request.data['income'],
+                b_category=request.data['b_category'],occupation__icontains=request.data['occupation'],s_state=request.data['state'])
+        
+            
+            # print("state schemes")
+            # for i in schemes_for_state:
+            #     print(i.id)
+            #     print(i.occupation)
+            # # print("center schemes")
+            # for i in schemes_for_center:
+            #     print(i.id)
+            #     #print(i.occupation)    
+            serializer_data_for_center=SchemesForUserSerializer(schemes_for_center,many=True)
+            serializer_data_for_state=SchemesForUserSerializer(schemes_for_state,many=True)
+            
+            print(serializer_data_for_center.data)
+            reponse={
+                
+                "status":200,
+                "message":"ok",
+                "data": {
+                    "statelist":serializer_data_for_state.data,
+                    "centerallist":serializer_data_for_center.data
+                }
+            }
+
+
+            return Response(reponse)
 

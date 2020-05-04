@@ -41,3 +41,27 @@ class SchemeCategorySerializer(serializers.ModelSerializer):
         model=SCategory
         fields='__all__'        
                 
+#Scheme detail serializer
+class SchemeDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=SchemesDetails
+        fields='__all__'                
+
+#Scheme listwith Detail serializer
+# class SchemeWithDetailSerializer(serializers.ModelSerializer):
+#     detail=SchemeDetailSerializer(read_only=True)
+#     class Meta:
+#         model=Schems
+#         fields=('id','detail')
+
+#Scheme serializer
+class SchemesForUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Schems
+        fields='__all__'       
+
+#check eligibility  serializer
+class CheckElegibilitySerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Eligibilitycheckedmember
+        fields='__all__'       

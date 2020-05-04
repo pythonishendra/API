@@ -194,6 +194,7 @@ class DjangoSession(models.Model):
         managed = False
         db_table = 'django_session'
 
+from datetime import datetime    
 
 class Eligibilitycheckedmember(models.Model):
     id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
@@ -201,9 +202,9 @@ class Eligibilitycheckedmember(models.Model):
     email = models.CharField(db_column='Email', max_length=250)  # Field name made lowercase.
     mobile = models.CharField(db_column='Mobile', max_length=20)  # Field name made lowercase.
     gender = models.CharField(db_column='Gender', max_length=100)  # Field name made lowercase.
-    address = models.CharField(db_column='Address', max_length=250)  # Field name made lowercase.
-    location = models.CharField(db_column='Location', max_length=200)  # Field name made lowercase.
-    dates = models.DateTimeField(db_column='Dates')  # Field name made lowercase.
+    address = models.CharField(db_column='Address', max_length=250,null=True)  # Field name made lowercase.
+    location = models.CharField(db_column='Location', max_length=200,null=True)  # Field name made lowercase.
+    dates = models.DateTimeField(db_column='Dates',default=datetime.now)  # Field name made lowercase.
     status = models.IntegerField(db_column='Status')  # Field name made lowercase.
 
     class Meta:

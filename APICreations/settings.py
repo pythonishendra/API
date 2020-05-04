@@ -25,7 +25,7 @@ SECRET_KEY = 's1=@ij@pqoz%r96xonc*1nuse55_-!x$)j+2fd)o*@*=3kv8ps'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['bholeapi.herokuapp.com','localhost']
+ALLOWED_HOSTS = ['bholeapi.herokuapp.com','localhost','127.0.0.1']
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'rest_framework.authtoken',
+    'rest_framework_swagger',
     #'ckeditor',
     #'ckeditor_uploader',
     #'cloudinary'
