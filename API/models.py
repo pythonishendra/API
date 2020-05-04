@@ -13,7 +13,7 @@ class Address(models.Model):
     address_line2 = models.CharField(max_length=250)
     city = models.IntegerField()
     img = models.CharField(max_length=250)
-    #status = models.IntegerField()
+    status = models.IntegerField()
 
     class Meta:
         managed = False
