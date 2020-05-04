@@ -397,9 +397,9 @@ class SCategory(models.Model):
     s_short_desc = models.CharField(max_length=250)
     status = models.IntegerField()
 
-    class Meta:
-        managed = False
-        db_table = 's_category'
+    # class Meta:
+    #     managed = False
+    #     db_table = 's_category'
 
 
 # class Schemeapplied(models.Model):
